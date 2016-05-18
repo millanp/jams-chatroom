@@ -1,5 +1,5 @@
 """
-WSGI config for makejamsgreat project.
+WSGI config for jamsgreatagain project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "makejamsgreat.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "jamsgreatagain.settings")
 
 application = get_wsgi_application()
