@@ -1,1 +1,1 @@
-web: gunicorn makejamsgreat.wsgi --log-file -
+web: gunicorn jamsgreatagain.wsgi --log-file -
