@@ -11,7 +11,7 @@ class Chatroom(models.Model):
 class Suggestion(models.Model):
     title = models.CharField(max_length=170)
     description = models.TextField()
-    upvoters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='upvoters')
-    downvoters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='downvoters')
+    upvoters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='upvoters', blank=True)
+    downvoters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='downvoters', blank=True)
     votecount = models.IntegerField(default=0)
-    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE)
+    chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE, null=True, blank=True)

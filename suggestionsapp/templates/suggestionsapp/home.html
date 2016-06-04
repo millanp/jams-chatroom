@@ -1,0 +1,7 @@
+{% extends "suggestionsapp/base_page.html" %}
+{% block content %}
+	{% for object in suggestion_list %}
+		<p>Title: {{ object.title }}</p>
+		<p>Description: {{ object.description }}</p>
+	{% endfor %}
+{% endblock %} 

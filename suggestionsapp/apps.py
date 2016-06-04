@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class SuggestionsappConfig(AppConfig):
-    name = 'suggestionsapp'
+    name = 'Suggestions App'
