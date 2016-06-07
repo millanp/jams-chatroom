@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "yuglify": "0.1.4"
+  },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.3.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/millanp/jams-chatroom.git"
+  }
+}

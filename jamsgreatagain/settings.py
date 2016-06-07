@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # A package to speed up static file serving (CSS, JS, images, etc.)
+    'pipeline',
+    # The thing we are creating
     'suggestionsapp',
 ]
 
@@ -123,3 +126,30 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'JAVASCRIPT': {
+        'standard': {
+            'source_filenames': {
+                'js/*.js',
+            },
+            'output_filename': 'js/std.js',
+        },
+    },
+    'STYLESHEETS': {
+        'standard': {
+            'source_filenames': {
+                'css/*.css',
+            },
+            'output_filename': 'css/std.css',
+        },
+    },
+}
