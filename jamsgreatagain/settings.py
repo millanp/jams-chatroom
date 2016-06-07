@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # A package to speed up static file serving (CSS, JS, images, etc.)
-    'pipeline',
+    # 'pipeline',
     # The thing we are creating
     'suggestionsapp',
 ]
