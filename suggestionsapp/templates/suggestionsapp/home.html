@@ -22,19 +22,25 @@
     </nav>
 
     <div class="container">
-
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-        <div class="list-group">
-        {% for object in suggestion_list %}
-			<p class="list-group-item">
-				<h2>{{ object.title }}</h2>: {{ object.title }}
-			</p>
-			<p class="list-group-item"><h1>Description</h1>: {{ object.description }}</p>
-		{% endfor %}
+		<div class="jumbotron">
+			<h1>Welcome!</h1>
+			<p>Sampletext</p>
 		</div>
-      </div>
+		<div class="starter-template">
+			<h1>Top suggestions</h1>
+			<div class="list-group">
+			{% for object in suggestion_list %}
+				<a class="list-group-item">
+					<h2 class="list-group-item-heading">
+						{{ object.title }}
+					</h2>
+					<p class="list-group-item-text">
+						{{ object.description }}
+					</p>
+				</a>
+			{% endfor %}
+			</div>
+		</div>
 
     </div><!-- /.container -->
 	
