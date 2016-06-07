@@ -15,3 +15,6 @@ class Suggestion(models.Model):
     downvoters = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='downvoters', blank=True)
     votecount = models.IntegerField(default=0)
     chatroom = models.ForeignKey(Chatroom, on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
