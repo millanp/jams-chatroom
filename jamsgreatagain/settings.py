@@ -148,9 +148,9 @@ PIPELINE = {
     'STYLESHEETS': {
         'standard': {
             'source_filenames': {
-                'css/*.css',
+                'suggestionsapp/*.css',
             },
-            'output_filename': 'css/std.css',
+            'output_filename': 'std.css',
         },
     },
 }

@@ -1,47 +1,48 @@
 {% extends "suggestionsapp/base_page.html" %}
 {% block content %}
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Make JAMS Great Again!</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Make JAMS Great Again!</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-    <div class="container">
-		<div class="jumbotron">
-			<h1>Welcome!</h1>
-			<p>Sampletext</p>
+<div class="container">
+	<div class="jumbotron">
+		<h1>Welcome!</h1>
+		<p>Sampletext</p>
+	</div>
+	<div class="starter-template">
+		<h1>Top suggestions</h1>
+		<div class="list-group">
+		{% for object in suggestion_list %}
+			<a class="list-group-item">
+				{% include "suggestionsapp/vote_widget.html" %}
+				<h2 class="list-group-item-heading">
+					{{ object.title }}
+				</h2>
+				<p class="list-group-item-text">
+					{{ object.description|truncatechars:25 }}
+				</p>
+			</a>
+		{% endfor %}
 		</div>
-		<div class="starter-template">
-			<h1>Top suggestions</h1>
-			<div class="list-group">
-			{% for object in suggestion_list %}
-				<a class="list-group-item">
-					<h2 class="list-group-item-heading">
-						{{ object.title }}
-					</h2>
-					<p class="list-group-item-text">
-						{{ object.description }}
-					</p>
-				</a>
-			{% endfor %}
-			</div>
-		</div>
+	</div>
 
-    </div><!-- /.container -->
-	
+</div><!-- /.container -->
+
 {% endblock %} 

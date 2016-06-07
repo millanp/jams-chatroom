@@ -1,3 +1,4 @@
+{% load pipeline %}
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,6 +21,7 @@
 		  /*text-align: center;*/
 		}
 	</style>
+	{% stylesheet 'standard' %}
 </head>
 {% include "suggestionsapp/navbar.html" %}
 <div class="container">

@@ -20,5 +20,5 @@ from suggestionsapp import urls
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^', include('suggestionsapp.urls')),
+    url(r'^', include(urls)),
 ]
