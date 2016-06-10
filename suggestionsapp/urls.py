@@ -1,7 +1,6 @@
-from django.conf.urls import url
-from django.contrib import admin
-from suggestionsapp import views
+from django.conf.urls import url, include
+from suggestionsapp import nav_urls
 
 urlpatterns = [
-    url(r'^$', views.SuggestionsListView.as_view(), name='suggestions-list'),
+    url(r'^', include(nav_urls)),
 ]

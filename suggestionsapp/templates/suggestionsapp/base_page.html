@@ -21,7 +21,11 @@
 		  /*text-align: center;*/
 		}
 	</style>
+	{% block extrahead %}
+		
+	{% endblock extrahead %}
 	{% stylesheet 'standard' %}
+	{% javascript 'standard' %}
 </head>
 {% include "suggestionsapp/navbar.html" %}
 <div class="container">

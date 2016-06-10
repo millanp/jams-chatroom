@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'suggestionsapp.context_processors.navbar'
             ],
         },
     },
@@ -140,7 +141,7 @@ PIPELINE = {
     'JAVASCRIPT': {
         'standard': {
             'source_filenames': {
-                'js/*.js',
+                'suggestionsapp/js/*.js',
             },
             'output_filename': 'js/std.js',
         },
@@ -148,9 +149,9 @@ PIPELINE = {
     'STYLESHEETS': {
         'standard': {
             'source_filenames': {
-                'suggestionsapp/*.css',
+                'suggestionsapp/css/*.css',
             },
-            'output_filename': 'std.css',
+            'output_filename': 'css/std.css',
         },
     },
 }

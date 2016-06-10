@@ -11,9 +11,13 @@
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+      {% for nav_url in nav_urls %}
+        <li>
+          <a href="{% url nav_url.1.name %}">
+            {{ nav_url.0 }}
+          </a>
+        </li>
+      {% endfor %}
       </ul>
     </div><!--/.nav-collapse -->
   </div>
