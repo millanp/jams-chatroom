@@ -1,19 +1,19 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 from suggestionsapp import models
-import nav_urls
-
-class NavUrlsMixin(object):
-    def get_context_data(self, **kwargs):
-        context = super(NavUrlsMixin, self).get_context_data(**kwargs)
-        context['navurls'] = nav_urls.navurlpatterns
-        return context
+from suggestionsapp import forms
 
 
-class SuggestionsListView(NavUrlsMixin, ListView):
+class SuggestionsListView(ListView):
     model = models.Suggestion
     template_name = 'suggestionsapp/home.html'
 
 
 class SuggestionDetailView(DetailView):
     model = models.Suggestion
-    template_name = 'suggestionsapp/suggestion.html'
+    template_name = 'suggestionsapp/suggestion_detail.html'
+
+
+class SuggestionCreateView(CreateView):
+    model = models.Suggestion
+    template_name = 'suggestionsapp/create_suggestion.html'
+    form_class = forms.SuggestionModelForm
