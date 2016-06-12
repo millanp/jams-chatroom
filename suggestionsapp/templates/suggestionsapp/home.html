@@ -7,6 +7,13 @@
         <p>Sampletext</p>
     </div>
     <div class="starter-template">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
         <h1>Top suggestions</h1>
         <div class="list-group">
         {% for object in suggestion_list %}

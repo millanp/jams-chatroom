@@ -15,14 +15,18 @@ class PlaceholdersMixin(object):
         for field_name in self.fields:
             field = self.fields.get(field_name)
             if field:
-                if isinstance(field.widget, forms.TextInput):
+                print field.widget
+                if isinstance(field.widget, forms.TextInput) or isinstance(field.widget, forms.Textarea):
                     if field.label is not None:
                         field.widget.attrs['placeholder'] = unicode(field.label)
                     else:
                         field.widget.attrs['placeholder'] = unicode(pretty_name(field_name))
                     field.label = ""
+                # Bootstrap thing
+                field.widget.attrs['class'] = 'form-control'
 
 
 class SuggestionModelForm(PlaceholdersMixin, forms.ModelForm):
-    model = models.Suggestion
-    fields = ['title', 'description']
+    class Meta:
+        model = models.Suggestion
+        fields = ['title', 'description']
