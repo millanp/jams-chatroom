@@ -1,8 +1,7 @@
-Django==1.9.6
-argparse==1.2.1
+dappr==0.4.6
 dj-database-url==0.4.1
+Django==1.9.6
 django-pipeline==1.6.8
 gunicorn==19.5.0
 psycopg2==2.6.1
 whitenoise==3.2
-wsgiref==0.1.2

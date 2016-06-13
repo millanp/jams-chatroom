@@ -26,7 +26,16 @@ class PlaceholdersMixin(object):
                 field.widget.attrs['class'] = 'form-control'
 
 
-class SuggestionModelForm(PlaceholdersMixin, forms.ModelForm):
+class BootstrapClassMixin(object):
+    def __init__(self, *args, **kwargs):
+        super(BootstrapClassMixin, self).__init__(*args, **kwargs)
+        for field_name in self.fields:
+            field = self.fields.get(field_name)
+            if field:
+                field.widget.attrs['class'] = 'form-control'
+
+
+class SuggestionModelForm(BootstrapClassMixin, forms.ModelForm):
     class Meta:
         model = models.Suggestion
         fields = ['title', 'description']

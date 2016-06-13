@@ -6,7 +6,6 @@
         <h1>Welcome!</h1>
         <p>Sampletext</p>
     </div>
-    <div class="starter-template">
         {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-success" role="alert">
@@ -23,11 +22,10 @@
                     {{ object.title }}
                 </h2>
                 <p class="list-group-item-text">
-                    {{ object.description|truncatechars:25 }}
+                    {{ object.description|truncatechars:75 }}
                 </p>
             </a>
         {% endfor %}
-        </div>
     </div>
 
 </div><!-- /.container -->
