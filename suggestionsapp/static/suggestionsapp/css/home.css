@@ -4,9 +4,9 @@
 .navbar-brand {
 	white-space: nowrap;
 }
-#navbar {
+/*#navbar {
 	width: 100%;
-}
+}*/
 #create-account-button {
 	margin-left: auto;
 }
@@ -14,8 +14,12 @@ nav .container {
 	display: flex;
 	align-items: center;
 }
-#navbar ul {
-	display: flex;
+
+#navbar ul, #navbar {
+	display: flex !important;
 	align-items: center;
 	width: 100%;
+}
+#navbar ul.navbar-right {
+    width: auto;
 }
