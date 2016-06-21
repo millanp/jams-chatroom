@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dappr',
     # A package to speed up static file serving (CSS, JS, images, etc.)
     'pipeline',
     # The thing we are creating
@@ -149,9 +150,12 @@ PIPELINE = {
     'STYLESHEETS': {
         'standard': {
             'source_filenames': {
-                'suggestionsapp/css/*.css',
+                'suggestionsapp/css/*.styl',
             },
             'output_filename': 'css/std.css',
         },
     },
+    'COMPILERS': (
+        'pipeline.compilers.stylus.StylusCompiler',
+    ),
 }
