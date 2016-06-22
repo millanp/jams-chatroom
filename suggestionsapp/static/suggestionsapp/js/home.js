@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$( ".increment.up").unbind( "click" );
 	$('.increment.up').click(function (event) {
         upvote($(this));
 	});
