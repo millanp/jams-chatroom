@@ -25,8 +25,19 @@
                         {{ object.description|truncatechars:75 }}
                     </p>
                 </span>
-                {% include "suggestionsapp/vote_widget.html" %}
-
+                <span class="voting">
+                    {% include "suggestionsapp/vote_widget.html" %}
+                    <form class="vote-form upvote-form" method="post" action="" style="display:none">
+                        {% csrf_token %}
+                        <input type="hidden" name="pk" value="{{ object.pk }}">
+                        <input type="hidden" name="method" value="upvote">
+                    </form>
+                    <form class="vote-form downvote-form" method="post" action="" style="display:none">
+                        {% csrf_token %}
+                        <input type="hidden" name="pk" value="{{ object.pk }}">
+                        <input type="hidden" name="method" value="upvote">
+                    </form>
+                </span>
             </span>
         {% endfor %}
     </div>

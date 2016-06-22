@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponse
 from suggestionsapp import models
 from suggestionsapp import forms
 
@@ -8,6 +9,12 @@ from suggestionsapp import forms
 class SuggestionsListView(ListView):
     model = models.Suggestion
     template_name = 'suggestionsapp/home.html'
+
+    # @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        obj = models.Suggestion.objects.get(pk=request.POST.get('pk'))
+        obj.upvote(request.user)
+        return HttpResponse('')
 
 
 class SuggestionDetailView(DetailView):

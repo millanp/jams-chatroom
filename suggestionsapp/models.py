@@ -18,3 +18,8 @@ class Suggestion(models.Model):
 
     def __str__(self):
         return self.title
+
+    def upvote(self, user):
+        # self.upvoters.add(user)
+        self.votecount += 1
+        self.save()

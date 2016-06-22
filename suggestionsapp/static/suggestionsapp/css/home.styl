@@ -1,7 +1,19 @@
 @import url("http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic")
 
-#vote-widget
+span.voting
 	margin-left: auto
+	
+	div.vote
+		transition: all 0.75s
+		transform: rotate(0deg)
+		animation: none
+		&.loading
+			animation: rotate 3s linear infinite
+@keyframes rotate
+	from
+		transform: rotate(0deg)
+	to
+		transform: rotate(360deg)
 
 .navbar-brand
 	white-space: nowrap
