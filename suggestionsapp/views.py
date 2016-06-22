@@ -14,8 +14,10 @@ class SuggestionsListView(ListView):
     # @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         obj = models.Suggestion.objects.get(pk=request.POST.get('pk'))
-        # if request.POST.method
-        obj.upvote(request.user)
+        if request.POST.get('method') == 'upvote':
+            obj.upvote(request.user)
+        elif request.POST.get('method') == 'downvote':
+            obj.downvote(request.user)
         return HttpResponse('')
 
 

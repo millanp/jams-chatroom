@@ -23,3 +23,7 @@ class Suggestion(models.Model):
         # self.upvoters.add(user)
         self.votecount += 1
         self.save()
+
+    def downvote(self, user):
+        self.votecount -= 1
+        self.save()

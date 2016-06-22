@@ -42,7 +42,7 @@
                     <form class="vote-form downvote-form" method="post" action="" style="display:none">
                         {% csrf_token %}
                         <input type="hidden" name="pk" value="{{ object.pk }}">
-                        <input type="hidden" name="method" value="upvote">
+                        <input type="hidden" name="method" value="downvote">
                     </form>
                 </span>
             </span>
