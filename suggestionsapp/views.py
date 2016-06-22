@@ -13,6 +13,7 @@ class SuggestionsListView(ListView):
     # @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
         obj = models.Suggestion.objects.get(pk=request.POST.get('pk'))
+        # if request.POST.method
         obj.upvote(request.user)
         return HttpResponse('')
 
