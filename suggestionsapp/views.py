@@ -9,6 +9,7 @@ from suggestionsapp import forms
 class SuggestionsListView(ListView):
     model = models.Suggestion
     template_name = 'suggestionsapp/home.html'
+    queryset = models.Suggestion.objects.order_by('votecount')
 
     # @method_decorator(login_required)
     def post(self, request, *args, **kwargs):
