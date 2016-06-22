@@ -11,7 +11,7 @@ $(document).ready(function() {
             type: 'POST',
             data: $upvoteForm.serialize(), 
             success: function(response) {
-                alert("Submitted comment");
+                $('#upvote-success-message').slideDown('fast').delay(500).slideUp('slow');
             },
             error: function() {
                  //$("#commentList").append($("#name").val() + "<br/>" + $("#body").val());

@@ -6,8 +6,10 @@
         <h1>Welcome!</h1>
         <p>Sampletext</p>
     </div>
-    <div class="upvote-success-message">
-        Upvote successful!
+    <div id="floater-wrapper">
+        <div class="alert alert-success" id="upvote-success-message">
+            Upvote successful!
+        </div>
     </div>
         {% if messages %}
             {% for message in messages %}
