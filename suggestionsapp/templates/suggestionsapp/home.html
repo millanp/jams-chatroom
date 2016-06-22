@@ -21,15 +21,17 @@
         <h1>Top suggestions</h1>
         <div class="list-group">
         {% for object in suggestion_list %}
-            <span href="{% url 'suggestion-detail' pk=object.pk %}" class="list-group-item">
-                <span class="suggestion-preview-text">
-                    <h2 class="list-group-item-heading">
-                        {{ object.title }}
-                    </h2>
-                    <p class="list-group-item-text">
-                        {{ object.description|truncatechars:75 }}
-                    </p>
-                </span>
+            <span class="list-group-item">
+                <a href="{% url 'suggestion-detail' pk=object.pk %}">
+                    <span class="suggestion-preview-text">
+                        <h2 class="list-group-item-heading">
+                            {{ object.title }}
+                        </h2>
+                        <p class="list-group-item-text">
+                            {{ object.description|truncatechars:75 }}
+                        </p>
+                    </span>
+                </a>
                 <span class="voting">
                     {% include "suggestionsapp/vote_widget.html" %}
                     <form class="vote-form upvote-form" method="post" action="" style="display:none">
