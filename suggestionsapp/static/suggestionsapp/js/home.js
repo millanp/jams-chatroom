@@ -24,6 +24,7 @@ $(document).ready(function() {
      	});
 	}
 	function downvote ($upvoteButton) {
+		// TODO TODO TODO: Add success message for downvote
 		var $parent = $upvoteButton.parent().parent();
 		var $counter = $parent.find('.count');
 		$counter.html(parseInt($counter.html())-1);

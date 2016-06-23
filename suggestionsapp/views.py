@@ -9,9 +9,13 @@ from suggestionsapp import forms
 class SuggestionsListView(ListView):
     model = models.Suggestion
     template_name = 'suggestionsapp/home.html'
-    queryset = models.Suggestion.objects.order_by('-votecount')
+    queryset = models.Suggestion.objects.order_by('-votecount')[:7]
 
-    # @method_decorator(login_required)
+    def get_context_data(self, **kwargs):
+        context = super(SuggestionsListView, self).get_context_data(**kwargs)
+        context['SUGGESTION_COUNT'] = models.Suggestion.objects.all().count()
+        return context
+
     def post(self, request, *args, **kwargs):
         obj = models.Suggestion.objects.get(pk=request.POST.get('pk'))
         if request.POST.get('method') == 'upvote':

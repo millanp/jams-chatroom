@@ -10,6 +10,9 @@
         <div class="alert alert-success" id="upvote-success-message">
             Upvote successful!
         </div>
+        <div class="alert alert-success" id="downvote-success-message">
+            Downvote successful!
+        </div>
     </div>
         {% if messages %}
             {% for message in messages %}
@@ -47,6 +50,10 @@
                 </span>
             </span>
         {% endfor %}
+        <span class="list-group-item">
+            {# This will be the "see more" button #}
+            See more ({{ SUGGESTION_COUNT }} total)
+        </span>
     </div>
 
 </div><!-- /.container -->
