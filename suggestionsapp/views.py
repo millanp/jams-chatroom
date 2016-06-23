@@ -25,6 +25,11 @@ class SuggestionsListView(ListView):
         return HttpResponse('')
 
 
+class FullSuggestionsListView(SuggestionsListView):
+    template_name = 'suggestionsapp/all_suggestions.html'
+    queryset = models.Suggestion.objects.order_by('-votecount')
+
+
 class SuggestionDetailView(DetailView):
     model = models.Suggestion
     template_name = 'suggestionsapp/suggestion_detail.html'

@@ -2,10 +2,12 @@
 {% block content %}
 
 <div class="container">
+    {% block jumbotron %}
     <div class="jumbotron">
         <h1>Welcome!</h1>
         <p>Sampletext</p>
-    </div>
+    </div>   
+    {% endblock jumbotron %}
     <div id="floater-wrapper">
         <div class="alert alert-success" id="upvote-success-message">
             Upvote successful!
@@ -21,7 +23,7 @@
                 </div>
             {% endfor %}
         {% endif %}
-        <h1>Top suggestions</h1>
+        <h1>{% block section_title %}Top suggestions{% endblock %}</h1>
         <div class="list-group">
         {% for object in suggestion_list %}
             <span class="list-group-item">

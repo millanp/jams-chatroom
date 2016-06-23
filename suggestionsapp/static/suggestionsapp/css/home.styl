@@ -1,56 +1,57 @@
 span.voting
-	margin-left auto
-	
-	div.vote
-		transition all 0.75s
-		transform rotate(0deg)
-		animation none
-		&.loading
-			animation rotate 3s linear infinite
+    margin-left auto
+    
+    div.vote
+        transition all 0.75s
+        transform rotate(0deg)
+        animation none
+        &.loading
+            animation rotate 3s linear infinite
 @keyframes rotate
-	from
-		transform rotate(0deg)
-	to
-		transform rotate(360deg)
+    from
+        transform rotate(0deg)
+    to
+        transform rotate(360deg)
 
 .navbar-brand
-	white-space nowrap
+    white-space nowrap
 
 #navbar
-	width 100%
+    width 100%
 
 #create-account-button
-	margin-left auto
+    margin-left auto
 
 nav .container
-	display flex
-	align-items center
-	flex-wrap wrap
-
+    display flex
+    align-items center
+    flex-wrap wrap
+    @media screen and (min-width: 768px)
+        flex-wrap nowrap
 #navbar ul
-	display flex
-	align-items center
-	width 100%
+    display flex
+    align-items center
+    width 100%
 
 .suggestion-preview-text
-	display flex
-	flex-direction column
-	justify-content center
+    display flex
+    flex-direction column
+    justify-content center
 
 .list-group-item
-	display flex
-	
-	a
-		display inline-flex
+    display flex
+    
+    a
+        display inline-flex
 
 #upvote-success-message, #downvote-success-message
-	display none
+    display none
 
 #floater-wrapper
-	position fixed
-	display flex
-	justify-content center
-	z-index 2000
-	top 0
-	left 0
-	width 100%
+    position fixed
+    display flex
+    justify-content center
+    z-index 2000
+    top 0
+    left 0
+    width 100%
