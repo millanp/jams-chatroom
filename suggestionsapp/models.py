@@ -2,10 +2,12 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.conf import settings
+from django.utils.crypto import get_random_string
 
 
 class Chatroom(models.Model):
-    pass
+    title = models.CharField(max_length=170)
+    label = models.SlugField(unique=True, default=get_random_string())
 
 
 class Suggestion(models.Model):
