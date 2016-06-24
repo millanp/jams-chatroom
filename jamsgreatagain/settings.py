@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'pipeline',
     # The thing we are creating
     'suggestionsapp',
+    # Websockets app
+    'channels',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -163,8 +165,11 @@ PIPELINE = {
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "asgiref.inmemory.ChannelLayer",
-        "ROUTING": "makejamsgreatagain.routing.channel_routing",
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "suggestionsapp.routing.channel_routing",
     },
 }
 
