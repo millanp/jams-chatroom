@@ -1,7 +1,48 @@
 {% extends "suggestionsapp/base_page.html" %}
+{% load pipeline %}
+{% block stylesandjs %}
+  {% javascript 'detail' %}
+{% endblock stylesandjs %}
+{% block extrahead %}
+<script>
+var ctx = {
+    CHATROOM_LABEL: '{{ object.chatroom.label }}',
+    CHATROOM_MESSAGES: [
+      {% for message in object.chatroom.messages.all %}
+        '{{ message }}',
+      {% endfor %}
+    ],
+};
+</script>
+{% endblock extrahead %}
+
 {% block content %}
-<div class="container">
+    {{ message }}
     <h1>{{ object.title }}</h1>
     {{ object.description }}
-</div>
+    <div class="panel panel-default" id="chatroom" ng-app="chatroom" ng-controller="chatroomController">
+      <div class="panel-heading">
+        <h3 class="panel-title">Discussion</h3>
+      </div>
+      <div class="panel-body">
+        <div class="well well-sm" id="add-comment-button">
+            <span class="glyphicon glyphicon-plus"></span>
+            Add a comment
+        </div>
+
+        {% include "suggestionsapp/add_comment_panel.html" %}
+        
+        <template id="comment-panel-template">
+          <div class="well well-sm">
+            <span class="comment-text">
+              {# comment text filled by js #}
+            </span>
+          </div>
+        </template>
+        <div id="comment-list">
+          {# comments filled by js #}
+        </div>
+
+      </div>
+    </div>
 {% endblock content %}

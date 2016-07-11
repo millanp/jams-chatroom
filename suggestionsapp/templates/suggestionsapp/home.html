@@ -1,7 +1,11 @@
 {% extends "suggestionsapp/base_page.html" %}
+{% load pipeline %}
+{% block stylesandjs %}
+{% javascript 'home' %}
+{% endblock stylesandjs %}
+
 {% block content %}
 
-<div class="page-content-wrapper">
     {% block jumbotron %}
     <div class="jumbotron">
         <h1>Welcome!</h1>
@@ -53,12 +57,16 @@
                 </span>
             </span>
         {% endfor %}
-        <span class="list-group-item">
-            {# This will be the "see more" button #}
-            See more ({{ SUGGESTION_COUNT }} total)
-        </span>
+        {% if suggestion_list|length > SUGGESTIONS_DISPLAYED %}
+            {% block see_more_button %}
+            <a href="{% url 'suggestion-full-list' %}" class="list-group-item">
+                {# This will be the "see more" button #}
+                See more ({{ SUGGESTION_COUNT }} total)
+            </a>
+            {% endblock see_more_button %}
+
+        {% endif %}
     </div>
 
-</div><!-- /.container -->
 
 {% endblock content %} 

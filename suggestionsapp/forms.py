@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 from suggestionsapp import models
 
 
@@ -31,11 +32,23 @@ class BootstrapClassMixin(object):
         super(BootstrapClassMixin, self).__init__(*args, **kwargs)
         for field_name in self.fields:
             field = self.fields.get(field_name)
-            if field:
+            if isinstance(field.widget, forms.TextInput) or isinstance(field.widget, forms.Textarea):
                 field.widget.attrs['class'] = 'form-control'
+                if isinstance(field.widget, forms.Textarea):
+                    del field.widget.attrs['cols']
+                    del field.widget.attrs['rows']
 
 
 class SuggestionModelForm(BootstrapClassMixin, forms.ModelForm):
     class Meta:
         model = models.Suggestion
         fields = ['title', 'description']
+
+
+class PostMessageForm(BootstrapClassMixin, forms.ModelForm):
+    class Meta:
+        model = models.Message
+        fields = ['text']
+
+class BSLoginForm(BootstrapClassMixin, AuthenticationForm):
+    pass

@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
@@ -7,13 +7,17 @@ from suggestionsapp import forms
 
 
 class SuggestionsListView(ListView):
+    SUGGESTIONS_DISPLAYED = 7
     model = models.Suggestion
     template_name = 'suggestionsapp/home.html'
-    queryset = models.Suggestion.objects.order_by('-votecount')[:7]
+
+    def get_queryset(self):
+        return models.Suggestion.objects.order_by('-votecount')[:self.SUGGESTIONS_DISPLAYED]
 
     def get_context_data(self, **kwargs):
         context = super(SuggestionsListView, self).get_context_data(**kwargs)
         context['SUGGESTION_COUNT'] = models.Suggestion.objects.all().count()
+        context['SUGGESTIONS_DISPLAYED'] = self.SUGGESTIONS_DISPLAYED
         return context
 
     def post(self, request, *args, **kwargs):
@@ -30,14 +34,15 @@ class FullSuggestionsListView(SuggestionsListView):
     queryset = models.Suggestion.objects.order_by('-votecount')
 
 
-class SuggestionDetailView(DetailView):
+class SuggestionDetailView(FormView, DetailView):
     model = models.Suggestion
     template_name = 'suggestionsapp/suggestion_detail.html'
+    form_class = forms.PostMessageForm
 
 
 class SuggestionCreateView(SuccessMessageMixin, CreateView):
     model = models.Suggestion
     template_name = 'suggestionsapp/create_suggestion.html'
     form_class = forms.SuggestionModelForm
-    success_url = reverse_lazy('suggestions-list')
+    success_url = reverse_lazy('suggestions-partial-list')
     success_message = 'Suggestion posted!'

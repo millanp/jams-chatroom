@@ -79,6 +79,27 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jamsgreatagain.wsgi.application'
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO'
+        },
+        'suggestionsapp': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'DEBUG',
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -145,9 +166,27 @@ PIPELINE = {
     'JAVASCRIPT': {
         'standard': {
             'source_filenames': {
-                'suggestionsapp/js/*.js',
+                'suggestionsapp/js/*/*.js',
             },
             'output_filename': 'js/std.js',
+        },
+        'home': {
+            'source_filenames': {
+                'suggestionsapp/js/home/*.js',
+            },
+            'output_filename': 'js/home.js',
+        },
+        'detail': {
+            'source_filenames': {
+                'suggestionsapp/js/detail/*.js',
+            },
+            'output_filename': 'js/detail.js',
+        },
+        'global': {
+            'source_filenames': {
+                'suggestionsapp/js/global/*.js',
+            },
+            'output_filename': 'js/global.js',
         },
     },
     'STYLESHEETS': {
