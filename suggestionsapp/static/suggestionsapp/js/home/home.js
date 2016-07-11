@@ -2,7 +2,8 @@ $(document).ready(function() {
 	$( ".increment.up").unbind( "click" );
 	$('.increment.up').click(function (event) {
         upvote($(this));
-	});
+	});	
+	$( ".increment.down").unbind( "click" );
 	$('.increment.down').click(function(event) {
 		downvote($(this));
 	});

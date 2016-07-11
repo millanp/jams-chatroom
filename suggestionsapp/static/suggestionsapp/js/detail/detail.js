@@ -1,8 +1,13 @@
 $(document).ready(function() {
+    // These unbinds are here to avoid a stupid bug in django-pipeline
+    // that produces two copies of every js file
+    $('#add-comment-button').unbind('click')
     $('#add-comment-button').click(function(event) {
         $(this).hide();
         $('#add-comment-panel').show();
     });
+
+    $('#add-comment-form').unbind('submit');
     $('#add-comment-form').submit(function(event) {
         event.preventDefault();
         $(this).parent().hide();
