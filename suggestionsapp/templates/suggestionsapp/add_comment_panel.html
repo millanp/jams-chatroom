@@ -1,0 +1,7 @@
+<div class="well well-lg" id="add-comment-panel">
+	<form id="add-comment-form">
+		<h2 class="add-comment-title">Add a comment</h2>
+		{{ form.as_p }}
+		<input id="submit-comment-button" type="submit" value="Submit" class="btn btn-primary" ng-click="submitComment(this.parentNode)">
+	</form>
+</div>
