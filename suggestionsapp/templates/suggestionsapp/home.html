@@ -57,7 +57,7 @@
                 </span>
             </span>
         {% endfor %}
-        {% if suggestion_list|length > SUGGESTIONS_DISPLAYED %}
+        {% if SUGGESTION_COUNT > SUGGESTIONS_DISPLAYED %}
             {% block see_more_button %}
             <a href="{% url 'suggestion-full-list' %}" class="list-group-item">
                 {# This will be the "see more" button #}

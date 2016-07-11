@@ -12,7 +12,10 @@ class SuggestionsListView(ListView):
     template_name = 'suggestionsapp/home.html'
 
     def get_queryset(self):
-        return models.Suggestion.objects.order_by('-votecount')[:self.SUGGESTIONS_DISPLAYED]
+        if self.SUGGESTIONS_DISPLAYED == 'all':
+            return models.Suggestion.objects.order_by('-votecount')
+        else:
+            return models.Suggestion.objects.order_by('-votecount')[:self.SUGGESTIONS_DISPLAYED]
 
     def get_context_data(self, **kwargs):
         context = super(SuggestionsListView, self).get_context_data(**kwargs)
@@ -32,6 +35,7 @@ class SuggestionsListView(ListView):
 class FullSuggestionsListView(SuggestionsListView):
     template_name = 'suggestionsapp/all_suggestions.html'
     queryset = models.Suggestion.objects.order_by('-votecount')
+    SUGGESTIONS_DISPLAYED = 'all'
 
 
 class SuggestionDetailView(FormView, DetailView):
