@@ -18,6 +18,9 @@
           </a>
         </li>
       {% endfor %}
+      <li id="login-button">
+        <a href="{% url 'login' %}">{# -----Insert button here----- #}</a>
+      </li>
       <li id="create-account-button">
         <a href="{% url 'registration_view' %}"><button class="btn btn-success" href="#">Create an account</button></a>
       </li>

@@ -79,6 +79,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'jamsgreatagain.wsgi.application'
 
+ADMINS = (('millan', 'millan.philipose@gmail.com'),)
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
